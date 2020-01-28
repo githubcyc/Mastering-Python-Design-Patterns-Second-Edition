@@ -123,7 +123,7 @@ def validate_style(builders):
         error_msg = 'Sorry, only margarita (key m) and creamy bacon (key c) are available'
         print(error_msg)
         return (False, None)
-    return (True, builder)
+    return True, builder
 
     
 def main():

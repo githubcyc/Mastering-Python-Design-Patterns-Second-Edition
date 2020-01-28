@@ -26,5 +26,5 @@ class Pizza:
             return Pizza(self) 
  
 if __name__ == '__main__': 
-    pizza = Pizza.PizzaBuilder().add_garlic().add_extra_cheese().build() 
+    pizza = Pizza.PizzaBuilder().add_garlic().build() 
     print(pizza)

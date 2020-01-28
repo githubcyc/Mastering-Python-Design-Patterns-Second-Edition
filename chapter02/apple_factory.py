@@ -1,4 +1,7 @@
-
+"""
+Simple Factory
+买Apple电脑，工厂模式直接返回一个你需要型号的电脑
+"""
 MINI14 = '1.4GHz Mac mini'
 
 class AppleFactory:
