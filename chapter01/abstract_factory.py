@@ -1,4 +1,8 @@
-
+"""
+Abstract Factory(抽象工厂: 解决复杂对象创建问题)
+工厂方法适合对象种类较少的情况，如果有多种不同类型对象需要创建，使用抽象工厂模式。
+以实现一个游戏的例子说明，在一个抽象工厂类里实现多个关联对象的创建：
+"""
 # Frog game
 
 class Frog:
@@ -9,6 +13,9 @@ class Frog:
         return self.name
 
     def interact_with(self, obstacle):
+        """
+        players with diffrent obstacle
+        """
         act = obstacle.action()
         msg = f'{self} the Frog encounters {obstacle} and {act}!'
         print(msg)
@@ -72,6 +79,10 @@ class WizardWorld:
 
 # Game environment
 class GameEnvironment:
+    """
+    抽象工厂，根据不同的玩家类型创建不同的角色和障碍 (游戏环境)
+    这里可以根据年龄判断，成年人返回『巫师』游戏，小孩返回『青蛙』游戏
+    """
     def __init__(self, factory):
         self.hero = factory.make_character()
         self.obstacle = factory.make_obstacle()

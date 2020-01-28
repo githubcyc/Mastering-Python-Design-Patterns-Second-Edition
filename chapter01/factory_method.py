@@ -1,30 +1,45 @@
+"""
+Factory Method(工厂方法)：执行单独的函数，通过传参提供需要的对象的信息。
+"""
 import json
 import xml.etree.ElementTree as etree
 
-
-class JSONDataExtractor:
-
+class DataExtractor:
     def __init__(self, filepath):
-        self.data = dict()
-        with open(filepath, mode='r', encoding='utf-8') as f:
-            self.data = json.load(f)
+        self.filepath = filepath
+    
+    @property
+    def parsed_data(self):
+        pass
+
+
+class JSONDataExtractor(DataExtractor):
+
+    def __init__(self, filepath, **kwargs):
+        super().__init__(filepath)
+        print(kwargs)
+        print(f"super's parsed_data: {super().parsed_data}")
 
     @property
     def parsed_data(self):
-        return self.data
+        data = dict()
+        with open(self.filepath, mode='r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data
 
 
-class XMLDataExtractor:
-
-    def __init__(self, filepath):
-        self.tree =  etree.parse(filepath)
+class XMLDataExtractor(DataExtractor):
 
     @property
     def parsed_data(self):
-        return self.tree
+        tree = etree.parse(self.filepath)
+        return tree
 
 
-def dataextraction_factory(filepath):
+def data_extraction_factory(filepath):
+    """
+    return: DataExtractor class
+    """
     if filepath.endswith('json'):
         extractor = JSONDataExtractor
     elif filepath.endswith('xml'):
@@ -37,7 +52,7 @@ def dataextraction_factory(filepath):
 def extract_data_from(filepath):
     factory_obj = None
     try:
-        factory_obj = dataextraction_factory(filepath)
+        factory_obj = data_extraction_factory(filepath)
     except ValueError as e:
         print(e)
     return factory_obj
