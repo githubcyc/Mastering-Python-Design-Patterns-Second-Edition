@@ -1,3 +1,9 @@
+"""
+The Model-View-Controller Pattern(mvc模式：解耦展示逻辑和业务逻辑)
+
+MVC模式既是一种设计模式，也是软件架构模式。比如流行的django框架就是mvc(MTV)模式。
+Model层负责和数据库交互，View层负责展现逻辑，Controller层负责粘合Model和View层，将各个部分解耦，使代码更易扩展和维护。
+"""
 quotes = (
 'A man is not complete until he is married. Then he is finished.', 
 'As I said before, I never repeat myself.', 
