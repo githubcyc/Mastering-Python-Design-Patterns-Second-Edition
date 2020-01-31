@@ -1,4 +1,8 @@
-
+"""
+The Template Pattern (模板模式：抽象出算法公共部分从而实现代码复用)
+Don't repeat yourself. 
+模板模式中，把代码中重复的部分抽出来作为一个新的函数，把可变的部分作为函数参数，从而消除代码冗余。
+"""
 from cowpy import cow
 
 def generate_banner(msg, style): 
